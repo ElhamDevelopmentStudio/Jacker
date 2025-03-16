@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Head from "next/head";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import StarField from "./components/StarField";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +32,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen bg-space text-foreground overflow-hidden">
+          <Head>
+            <title>Jacker - Futuristic Social Media Automation</title>
+            <meta
+              name="description"
+              content="Experience the future of social media management with Jacker's AI-powered automation tools."
+            />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap"
+              rel="stylesheet"
+            />
+          </Head>
+          <StarField />
+          <Header />
+          <main className="relative z-10">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
